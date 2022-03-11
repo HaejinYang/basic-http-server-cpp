@@ -27,7 +27,7 @@ void HttpParser::Parse(char* buf, size_t length)
 	}
 }
 
-size_t HttpParser::GetLinesCount()
+size_t HttpParser::GetHeaderLines()
 {
 	return mParsedHeader.size();
 }
@@ -72,4 +72,3 @@ bool HttpParser::HasHttpMethod(std::string& s)
 	// reference : https://developer.mozilla.org/ko/docs/Web/HTTP/Methods
 	return (s == "POST" || s == "GET" || s == "PUT" || s == "DELETE" || s == "HEAD" || s == "TRACE" || s == "PATCH" || s == "CONNECT" || s == "OPTIONS");
 } 
-

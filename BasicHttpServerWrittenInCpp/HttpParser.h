@@ -7,7 +7,7 @@ class HttpParser
 {
 public:
 	void Parse(char* buf, size_t length);
-	size_t GetLinesCount();
+	size_t GetHeaderLines();
 	void PrintAllLines();
 	std::string GetPath();
 	bool HasHttpMethod(std::string& s);
