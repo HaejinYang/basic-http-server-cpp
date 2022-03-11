@@ -10,9 +10,9 @@ public:
 	size_t GetLinesCount();
 	void PrintAllLines();
 	std::string GetPath();
-	
 	bool HasHttpMethod(std::string& s);
 private:
 private:
-	std::vector<std::string> mLineByLineParsedResult;
+	std::vector<std::string> mParsedHeader;
+	std::string mParsedBody;
 };

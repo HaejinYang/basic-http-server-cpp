@@ -38,3 +38,9 @@ TEST(HasHttpMethod, HttpMethodReturnTrue)
 	input = "DELETE";
 	EXPECT_TRUE(parser.HasHttpMethod(input));
 }
+
+TEST(GetPath, IfParseSuccessShouldReturnPath)
+{
+	HttpParser parser;
+	//parser.Parse()
+}

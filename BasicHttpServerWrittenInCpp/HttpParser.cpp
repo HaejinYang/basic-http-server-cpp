@@ -10,31 +10,44 @@ void HttpParser::Parse(char* buf, size_t length)
 
 	while (std::getline(fullText, eachLine, delimeter))
 	{
-		mLineByLineParsedResult.push_back(eachLine);
+		if (eachLine.size() == 0)
+		{
+			fullText.ignore();
+			if (std::getline(fullText, eachLine, delimeter))
+			{
+				// body
+				mParsedBody = eachLine;
+			}
+
+			break;
+		}
+
+		mParsedHeader.push_back(eachLine);
+		fullText.ignore();
 	}
 }
 
 size_t HttpParser::GetLinesCount()
 {
-	return mLineByLineParsedResult.size();
+	return mParsedHeader.size();
 }
 
 void HttpParser::PrintAllLines()
 {
-	for (const auto& e : mLineByLineParsedResult)
+	for (const auto& e : mParsedHeader)
 	{
-		std::cout << e << std::endl;
+		std::cout << e << std::endl;;
 	}
 }
 
 std::string HttpParser::GetPath()
 {
-	if (mLineByLineParsedResult.size() == 0)
+	if (mParsedHeader.size() == 0)
 	{
 		return "";
 	}
 
-	std::stringstream firstLine(mLineByLineParsedResult[0]);
+	std::stringstream firstLine(mParsedHeader[0]);
 	std::string text;
 	char delimeter = ' ';
 

@@ -102,7 +102,9 @@ void Server::run()
 		
 		HttpParser parser;
 		parser.Parse(buf, result);
+		parser.PrintAllLines();
 		std::cout << parser.GetPath() << std::endl;
+
 
 		const char* body = "<html><body><p>Hello world</p></body></html>";
 		const char* header = "HTTP/1.1 200 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
