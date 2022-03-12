@@ -91,6 +91,24 @@ void Server::run()
 	Router::GetInstance().RegisterPath("/b");
 	Router::GetInstance().RegisterPath("/c");
 
+	{
+		std::string page = "HTTP/1.1 200 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
+		page += "<html><body><p>Hello world : /a</p></body></html>";
+		Page::GetInstance().RegisterPage("/a", page);
+	}
+
+	{
+		std::string page = "HTTP/1.1 200 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
+		page += "<html><body><p>Hello world : /b</p></body></html>";
+		Page::GetInstance().RegisterPage("/b", page);
+	}
+
+	{
+		std::string page = "HTTP/1.1 200 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
+		page += "<html><body><p>Hello world : /c</p></body></html>";
+		Page::GetInstance().RegisterPage("/c", page);
+	}
+
 	while (true)
 	{
 		SOCKADDR_IN client_address;
@@ -120,15 +138,16 @@ void Server::run()
 		{
 			body = "<html><body><p>Paget Not Found</p></body></html>";
 			header = "HTTP/1.1 404 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
+
+			send(connected_socket, header, static_cast<int>(strlen(header)), 0);
+			send(connected_socket, body, static_cast<int>(strlen(body)), 0);
 		}
 		else
 		{
-			body = "<html><body><p>Hello world</p></body></html>";
-			header = "HTTP/1.1 200 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
+			std::string& page = Page::GetInstance().FindPage(path);
+			
+			send(connected_socket, page.c_str(), page.size(), 0);
 		}
-
-		send(connected_socket, header, static_cast<int>(strlen(header)), 0);
-		send(connected_socket, body, static_cast<int>(strlen(body)), 0);
 
 		Sleep(10);
 		closesocket(connected_socket);
