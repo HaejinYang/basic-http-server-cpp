@@ -20,12 +20,18 @@
     <ClCompile Include="Server.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Router.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HttpParser.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="Server.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Router.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "HttpParser.h"
+#include "Router.h"
 #include "Server.h"
 
 bool Server::Start(std::wstring listenIP, unsigned short port)
@@ -83,6 +84,11 @@ bool Server::initialize(std::wstring listenIP, unsigned short port)
 
 void Server::run()
 {
+	//Router::GetInstance().RegisterDefaultPath("/");
+	Router::GetInstance().RegisterPath("/a");
+	Router::GetInstance().RegisterPath("/b");
+	Router::GetInstance().RegisterPath("/c");
+
 	while (true)
 	{
 		SOCKADDR_IN client_address;
@@ -103,11 +109,21 @@ void Server::run()
 		HttpParser parser;
 		parser.Parse(buf, result);
 		parser.PrintAllLines();
-		std::cout << parser.GetPath() << std::endl;
-
-
-		const char* body = "<html><body><p>Hello world</p></body></html>";
-		const char* header = "HTTP/1.1 200 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
+		
+		std::string path = parser.GetPath();
+		bool bFindPath = Router::GetInstance().IsExistRoute(path);
+		const char* body;
+		const char* header;
+		if (bFindPath == false)
+		{
+			body = "<html><body><p>Paget Not Found</p></body></html>";
+			header = "HTTP/1.1 404 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
+		}
+		else
+		{A
+			body = "<html><body><p>Hello world</p></body></html>";
+			header = "HTTP/1.1 200 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
+		}
 
 		send(connected_socket, header, static_cast<int>(strlen(header)), 0);
 		send(connected_socket, body, static_cast<int>(strlen(body)), 0);
