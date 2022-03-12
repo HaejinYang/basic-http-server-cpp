@@ -3,7 +3,9 @@
 #include <iostream>
 #include "HttpParser.h"
 #include "Router.h"
+#include "Page.h"
 #include "Server.h"
+
 
 bool Server::Start(std::wstring listenIP, unsigned short port)
 {
@@ -120,7 +122,7 @@ void Server::run()
 			header = "HTTP/1.1 404 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
 		}
 		else
-		{A
+		{
 			body = "<html><body><p>Hello world</p></body></html>";
 			header = "HTTP/1.1 200 OK\nContent-Length: 45\nContent-Type: text/html\n\n";
 		}

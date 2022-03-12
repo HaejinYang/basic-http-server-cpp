@@ -143,11 +143,13 @@
   <ItemGroup>
     <ClCompile Include="HttpParser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Page.cpp" />
     <ClCompile Include="Router.cpp" />
     <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HttpParser.h" />
+    <ClInclude Include="Page.h" />
     <ClInclude Include="Router.h" />
     <ClInclude Include="Server.h" />
   </ItemGroup>
