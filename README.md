@@ -8,3 +8,11 @@ This project implement basic http server function like parsing http method, rout
 
 
 # result
+
+## Routing success
+
+![alt text](Resource/RoutingSuccess.jpg)
+
+## Routing fail
+
+![alt text](Resource/RoutingFail.jpg)
