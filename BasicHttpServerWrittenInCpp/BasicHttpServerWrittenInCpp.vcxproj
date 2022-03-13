@@ -148,7 +148,7 @@
     <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HttpParser.h" />
+    <ClInclude Include="HttpRequest.h" />
     <ClInclude Include="Page.h" />
     <ClInclude Include="Router.h" />
     <ClInclude Include="Server.h" />

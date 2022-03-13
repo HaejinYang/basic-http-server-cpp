@@ -7,19 +7,19 @@ Page& Page::GetInstance()
 	return page;
 }
 
-void Page::RegisterPage(std::string route, std::string page)
+void Page::RegisterPage(std::string route, OnRoute executor)
 {
-	mPages[route] = page;
+	mPages[route] = executor;
 }
 
-std::string& Page::FindPage(std::string route)
+std::string Page::FindPage(std::string route)
 {
 	if (mPages.find(route) == mPages.end())
 	{
 		return mEmptyPage;
 	}
 
-	return mPages[route];
+	return mPages[route]();
 }
 
 Page::Page()
