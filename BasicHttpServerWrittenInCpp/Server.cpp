@@ -87,9 +87,6 @@ bool Server::initialize(std::wstring listenIP, unsigned short port)
 void Server::run()
 {
 	//Router::GetInstance().RegisterDefaultPath("/");
-	Router::GetInstance().RegisterPath("/a");
-	Router::GetInstance().RegisterPath("/b");
-	Router::GetInstance().RegisterPath("/c");
 
 	Page::GetInstance().RegisterPage("/a", []()->std::string {
 		std::string page = "HTTP/1.1 200 OK\nContent-Type: text/html\n\n";

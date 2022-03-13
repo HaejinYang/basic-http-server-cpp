@@ -1,3 +1,4 @@
+#include "Router.h"
 #include "Page.h"
 
 Page& Page::GetInstance()
@@ -9,6 +10,7 @@ Page& Page::GetInstance()
 
 void Page::RegisterPage(std::string route, OnRoute executor)
 {
+	Router::GetInstance().RegisterPath(route);
 	mPages[route] = executor;
 }
 
