@@ -9,7 +9,7 @@ TEST(FindPageMethod, IfRegisteredFindSuccess)
 		return "/a";
 		});
 	
-	EXPECT_EQ(Page::GetInstance().FindPage("/a"), "/a");
+	EXPECT_EQ(Page::GetInstance().Response("/a"), "/a");
 }
 
 TEST(FindPageMethod, IfNotRegisteredFindFail)
@@ -19,5 +19,5 @@ TEST(FindPageMethod, IfNotRegisteredFindFail)
 		return "/a";
 		});
 
-	EXPECT_EQ(Page::GetInstance().FindPage("/b"), "");
+	EXPECT_EQ(Page::GetInstance().Response("/b"), "");
 }

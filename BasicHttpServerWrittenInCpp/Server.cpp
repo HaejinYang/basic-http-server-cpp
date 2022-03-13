@@ -135,20 +135,19 @@ void Server::run()
 		
 		std::string path = parser.GetPath();
 		bool bFindPath = Router::GetInstance().IsExistRoute(path);
-		const char* body;
-		const char* header;
+
 		if (bFindPath == false)
 		{
 			std::string response = "HTTP/1.1 404 OK\nContent-Type: text/html\n\n";
 			response += "<html><body><p>Paget Not Found</p></body></html>";
 
-			send(connected_socket, response.c_str(), response.size(), 0);
+			send(connected_socket, response.c_str(), static_cast<int>(response.size()), 0);
 		}
 		else
 		{
-			std::string page = Page::GetInstance().FindPage(path);
+			std::string response = Page::GetInstance().Response(path);
 			
-			send(connected_socket, page.c_str(), page.size(), 0);
+			send(connected_socket, response.c_str(), static_cast<int>(response.size()), 0);
 		}
 
 		Sleep(10);

@@ -11,7 +11,7 @@ class Page
 public:
 	static Page& GetInstance();
 	void RegisterPage(std::string route, OnRoute executor);
-	std::string FindPage(std::string route);
+	std::string Response(std::string route);
 private:
 	Page();
 	~Page();

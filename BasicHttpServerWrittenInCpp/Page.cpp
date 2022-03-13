@@ -12,7 +12,7 @@ void Page::RegisterPage(std::string route, OnRoute executor)
 	mPages[route] = executor;
 }
 
-std::string Page::FindPage(std::string route)
+std::string Page::Response(std::string route)
 {
 	if (mPages.find(route) == mPages.end())
 	{
