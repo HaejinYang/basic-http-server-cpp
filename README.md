@@ -1,6 +1,6 @@
 # BasicHttpServerWrittenInCpp
 메소드를 파싱하고 라우팅하는 HTTP 웹 서버의 기능을 일부 구현함.
-[C로 작성했던 버전](https://github.com/HaejinYang/BasicHttpServerWrittenInC) 
+
 # 결과
 
 ## 라우팅 성공
