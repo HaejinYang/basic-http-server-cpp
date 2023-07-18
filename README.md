@@ -1,18 +1,12 @@
 # BasicHttpServerWrittenInCpp
-Show basic principle of http web server
+메소드를 파싱하고 라우팅하는 HTTP 웹 서버의 기능을 일부 구현함.
+[C로 작성했던 버전](https://github.com/HaejinYang/BasicHttpServerWrittenInC) 
+# 결과
 
-# Description
-This project implement basic http server function like parsing http method, routing, etc...
-
-[BasicHttpServerWrittenInC](https://github.com/HaejinYang/BasicHttpServerWrittenInC) is previous version.
-
-
-# result
-
-## Routing success
+## 라우팅 성공
 
 ![alt text](Resource/RoutingSuccess.jpg)
 
-## Routing fail
+## 라우팅 실패
 
 ![alt text](Resource/RoutingFail.jpg)
